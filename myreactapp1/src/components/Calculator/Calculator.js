@@ -24,10 +24,12 @@ export class Calculator extends Component {
     };
 
     setDisplay(num){
-        let display = this.state.display==='0'||this.state.display? num: this.state.display + num;
-
+        let display = this.state.display==='0'||this.state.resetDisplay? num: this.state.display + num;
+        // add an auto calculate here that runs when you click something and there is an operater set
+        // just call the calculateEquals function
         this.setState({
             display: display.length<13?display:this.state.display,
+            resetDisplay: false,
         })
     };
 
@@ -86,12 +88,14 @@ export class Calculator extends Component {
             display: result,
             operator: '',
             temp: 0,
+            resetDisplay: true,
         })
     }
 
     clearDisplay(){
         this.setState({
             display:'0',
+            // resetDisplay: true,
         })
     }
 
